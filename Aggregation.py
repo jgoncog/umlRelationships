@@ -7,7 +7,7 @@ class Weapon:
 class Character:
     def __init__(self, name: str, weapon: Weapon = None):
         self.name = name
-        self.weapon = weapon  # Aggregation: Weapon is passed in, not created inside
+        self.weapon = weapon  
 
     def attack(self):
         if self.weapon:
