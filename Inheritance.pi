@@ -1,0 +1,29 @@
+class Character:
+    def __init__(self, name: str, base_damage: int):
+        self.name = name
+        self.base_damage = base_damage
+
+    def get_damage((self) -> int:
+        return self.base_damage
+
+
+# Derived Class: Mutates base behavior dynamically
+class Berserker(Character):
+    def __init__(self, name: str, base_damage: int, health_percentage: float):
+        super().__init__(name, base_damage)
+        self.health_percentage = health_percentage
+
+    # Overrides parent method while re-using parent logic
+    def get_damage(self) -> int:
+        raw_damage = super().get_damage()
+        # Less health = up to 2x damage multiplier
+        fury_multiplier = 1.0 + (1.0 - self.health_percentage)
+        return int(raw_damage * fury_multiplier)
+
+
+# Usage
+hero = Character("Warrior", 50)
+berserker = Berserker("Barbarian", 50, health_percentage=0.2)  # 20% HP remaining
+
+print(f"{hero.name} Damage:", hero.get_damage())          # Output: 50
+print(f"{berserker.name} Damage:", berserker.get_damage())  # Output: 90 (1.8x boost)
