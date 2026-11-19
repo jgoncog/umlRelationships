@@ -1,14 +1,17 @@
-# activitySchoolManagement.py
-
-# Create a parent class Person
 class Person:
     def __init__(self, name, age):
         self.name = name
-        self.age = age
+        self.__age = age
 
-# Create an object person1
-person1 = Person("Lina", 20)
+    def get_age(self):
+        return self.__age
 
-# Display information
-print("Name:", person1.name)
-print("Age:", person1.age)
+
+person = Person("Lina", 20)
+
+print("Name:", person.name)
+print("Age:", person.get_age())
+
+# Reflection:
+# Using get_age() protects private data and allows
+# controlled access to the age attribute.
